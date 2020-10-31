@@ -4,14 +4,14 @@
 #include <linux/list.h>
 #include <linux/version.h>
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,7,0)
-int init_kallsyms(void) {
-	return 0;
-}
-#elif IS_ENABLED(COdNFIG_KPROBES)
+#if IS_ENABLED(CONFIG_KPROBES)
 #include "kallsyms_kp.c"
 #elif IS_ENABLED(CONFIG_LIVEPATCH)
 #include "kallsyms_lp.c"
+#elif LINUX_VERSION_CODE < KERNEL_VERSION(5,7,0)
+int init_kallsyms(void) {
+	return 0;
+}
 #else
 #error "No suitable kallsyms acquisition method!"
 #endif
