@@ -8,7 +8,6 @@
 MODULE_DESCRIPTION("Access to kallsyms_lookup_symbol through kernel livepatch interface");
 MODULE_AUTHOR("Heep");
 MODULE_LICENSE("GPL");
-MODULE_INFO(livepatch, "Y");
 
 static int example_init(void);
 static void example_exit(void);
