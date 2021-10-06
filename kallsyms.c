@@ -15,3 +15,8 @@ int init_kallsyms(void) {
 #else
 #error "No suitable kallsyms acquisition method!"
 #endif
+
+int kallsyms_lookup_fault(const char *sym) {
+	printk("kallsyms_lookup_name failed for: %s\n", sym);
+	return -EBADF;
+}
